@@ -1,0 +1,12 @@
+- name: Copy file to /var/ossec/etc/
+  copy:
+    src: sca_detect_linux_keylogger.yml
+    dest: /var/ossec/etc/
+
+- name: Change ownership of the file
+  command: chown wazuh:wazuh /var/ossec/etc/sca_detect_linux_keylogger.yml
+
+- name: Restart service wazug-agent, in all cases
+  ansible.builtin.service:
+    name: wazuh-agent
+    state: restarted

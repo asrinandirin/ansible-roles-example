@@ -1,0 +1,6 @@
+- name: Change Config and Restart Service
+  hosts: all
+  become: true
+  gather_facts: no
+  roles:
+    - modify-service
